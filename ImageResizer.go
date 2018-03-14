@@ -26,12 +26,12 @@ func Resize(width int, height int, img *image.Image) *image.Image {
 	preferredHeight := uint(0)
 
 	if originalWidth < originalHeight {
-		preferredHeight = uint(height)
-		preferredWidth = uint(float32(originalWidth * height) / float32(originalHeight))
-
-	} else {
 		preferredWidth = uint(width)
 		preferredHeight = uint(float32(originalHeight * width) / float32(originalWidth))
+
+	} else {
+		preferredHeight = uint(height)
+		preferredWidth = uint(float32(originalWidth * height) / float32(originalHeight))
 	}
 
 	resizedImage := resize.Resize(preferredWidth, preferredHeight, original, resize.NearestNeighbor)
